@@ -194,7 +194,7 @@ export default class VirtualList extends PureComponent {
     
     let offset;
     
-    if (languageDirection === 'rtl') {
+    if (languageDirection === 'rtl' && scrollDirection === DIRECTION_HORIZONTAL) {
       
       if (scrollImplementation === SCROLL_IMPLEMENTATION_NEGATIVE) {
      
@@ -215,7 +215,7 @@ export default class VirtualList extends PureComponent {
 
   scrollTo(value) {
     const {scrollDirection, languageDirection} = this.props;
-    if (languageDirection === 'rtl') {
+    if (languageDirection === 'rtl' && scrollDirection === DIRECTION_HORIZONTAL) {
 
       this.rootNode[scrollProp[scrollDirection]] = this.rootNode[SCROLL_WIDTH] - value;
     } else {
@@ -297,6 +297,7 @@ export default class VirtualList extends PureComponent {
       offset,
       overscanCount,
     });
+
     const items = [];
 
     for (let index = start; index <= stop; index++) {
